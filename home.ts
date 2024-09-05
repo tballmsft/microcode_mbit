@@ -12,20 +12,6 @@ namespace microcode {
 
             const y = Screen.HEIGHT * 0.234 // y = 30 on an Arcade Shield of height 128 pixels
 
-            const sensorSelectTutorialOpts = {
-                tips: [
-                    {text: "Pick your sensors\non the next\nscreen."},
-                    {text: "Use UP and DOWN\nto scroll.\nTry it now!"},
-                    {text: "Use A to select a\nsensor.", keywords: [" A "], keywordColors: [6]},
-                    {text: "Select DONE to\nconfirm your\nchoices.", keywords: [" DONE "], keywordColors: [7]},
-                    {text: "Press A to continue!", keywords: [" A "], keywordColors: [6]}, // Red
-                ],
-                backFn: () => {
-                    this.app.popScene()
-                    this.app.pushScene(new SensorSelect(this.app, CursorSceneEnum.LiveDataViewer))
-                },
-            }
-
             this.liveDataBtn = new Button({
                 parent: null,
                 style: ButtonStyles.Transparent,

@@ -47,7 +47,6 @@
         "loggingConfig.ts",
         "sensorSelect.ts",
         "dataRecorder.ts",
-        "clearDataloggerScreen.ts",
         "tabularDataViewer.ts",
         "generateGraph.ts",
         "distributedLogging.ts"
