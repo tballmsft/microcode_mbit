@@ -23,21 +23,14 @@ namespace microcode {
             this.sceneManager = new SceneManager()
 
             datalogger.includeTimestamp(FlashLogTimeStampFormat.None)
-            const arcadeShieldConnected = _screen_internal.displayPresent();
-
+            
+            const arcadeShieldConnected = screenhelpers.displayPresent();
             if (arcadeShieldConnected)
                 this.pushScene(new Home(this))
             else
                 new DistributedLoggingProtocol(this, false);
         }
 
-        public saveBuffer(slot: string, buf: Buffer) {
-            reportEvent("app.save", { slot: slot, size: buf.length })
-            console.log(`save to ${slot}: ${buf.length}b`)
-            profile()
-            settings.writeBuffer(slot, buf)
-        }
-        
         public pushScene(scene: Scene) {
             this.sceneManager.pushScene(scene)
         }
