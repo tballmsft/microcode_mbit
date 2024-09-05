@@ -60,8 +60,8 @@ namespace microcode {
                 x: 0,
                 y,
                 onClick: () => {
-                    // this.app.popScene()
-                    // this.app.pushScene(new GraphGenerator(this.app))
+                    this.app.popScene()
+                    this.app.pushScene(new GraphGenerator(this.app))
                 },
             })
 
