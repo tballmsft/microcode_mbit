@@ -3,6 +3,8 @@ namespace microcode {
     const MAX_SENSORS_ON_SCREEN: number = 5
     /** The colours that will be used for the lines & sensor information boxes */
     const SENSOR_BOX_COLORS: number[] = [2,3,4,6,7,9]
+    /** The colours that will be used for writing the information about the sensor. */
+    const SENSOR_BOX_TEXT_COLORS: number[] = [1,1,1,1,15,15]
 
     /**
      * Responsible for invoking the logging commands for each sensor,
@@ -177,13 +179,13 @@ namespace microcode {
                         // Write the sensor information:
                         //------------------------------
                         const sensorInfo: string[] = (sensor.isInEventMode) ? sensor.getEventInformation() : sensor.getRecordingInformation();
-                        sensorInfo.forEach((info) => {
+                        sensorInfo.forEach((info, idx) => {
                             y += 12
                             screen().print(
                                 info,
                                 24,
                                 y,
-                                15
+                                SENSOR_BOX_TEXT_COLORS[idx]
                             )
                         });
                     }
