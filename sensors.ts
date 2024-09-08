@@ -11,7 +11,6 @@ namespace microcode {
      */
     export const sensorEventSymbols = ["=", ">", "<", ">=", "<="]
 
-
     /**
      * Type for value bound to inequality key within sensorEventFunctionLookup
      * 
@@ -326,6 +325,7 @@ namespace microcode {
         }
     }
 
+
     /**
      * Abstraction for all available sensors.
      * This class is extended by each of the concrete sensors which add on static methods for their name, getting their readings & optionally min/max readings
@@ -387,6 +387,7 @@ namespace microcode {
         }
 
 
+
         //------------------
         // Factory Function:
         //------------------
@@ -398,7 +399,6 @@ namespace microcode {
          * @returns concrete sensor that the input name corresponds to.
          */
         public static getFromName(name: string): Sensor {
-            // basic.showString(name)
             if      (name == "Accel. X" || name == "Accelerometer X" || name == "AX")  return new AccelerometerXSensor();
             else if (name == "Accel. Y" || name == "Accelerometer Y" || name == "AY")  return new AccelerometerYSensor();
             else if (name == "Accel. Z" || name == "Accelerometer Z" || name == "AZ")  return new AccelerometerZSensor();
@@ -769,7 +769,8 @@ namespace microcode {
 
 
     /**
-     * Sensing analog values on the P0 pin
+     * Sensing analog values on the P0 pin.
+     * Reading is normalised to be between 0 and 1.
      */
     export class AnalogPinP0Sensor extends Sensor {
         constructor() {super()}
@@ -782,7 +783,8 @@ namespace microcode {
 
 
     /**
-     * Sensing analog values on the P1 pin
+     * Sensing analog values on the P1 pin.
+     * Reading is normalised to be between 0 and 1.
      */
     export class AnalogPinP1Sensor extends Sensor {
         constructor() {super()}
@@ -795,7 +797,8 @@ namespace microcode {
 
 
     /**
-     * Sensing analog values on the P2 pin
+     * Sensing analog values on the P2 pin.
+     * Reading is normalised to be between 0 and 1.
      */
     export class AnalogPinP2Sensor extends Sensor {
         constructor() {super()}
@@ -808,21 +811,20 @@ namespace microcode {
 
 
     /**
-     * Micro-tesla reading of the magnet sensor
+     * Micro-tesla reading of the magnet sensor on Dimension.Strength
      */
     export class MagnetXSensor extends Sensor {
         constructor() {super()}
 
         public static getName(): string {return "Magnet"}
         public static getRadioName(): string {return "M"}
-        public static getReading(): number {return input.magneticForce(Dimension.X)}
+        public static getReading(): number {return input.magneticForce(Dimension.Strength)}
     }
 
 
     /**
      * Onboard Pitch or Roll sensor
      * 
-     * MIN & MAX RANGE UNVERIFIED
      */
     export class PitchSensor extends Sensor {
         constructor() {super()}
@@ -849,9 +851,6 @@ namespace microcode {
 
     /**
      * Detection of whether of not the Logo has been pressed
-     * 
-     * sensorMinReading may change in future
-     * sensorMaxReading may change in future
      */
     export class LogoPressSensor extends Sensor {
         constructor() {super()}
