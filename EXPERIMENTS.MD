@@ -1,11 +1,11 @@
 # Experiments:
 This guide details 5 potential use cases and experiments you can perform with MicroData:
 1. [Electro-magnets](#Electro-Magnometry)
-2. [Egg-drop](#Egg-drop)
+2. [Micro-drop](#Micro-drop)
 3. [Botany experiment](#Botany-Experiment)
 4. [Noise insulation](#Noise-insulation)
 
-# Egg-drop:
+# Micro-drop:
 Students need to build a container for their microbit to protect it when dropped from a height.<br>
 The onboard accelerometers will be configured to measure the force that the microbit experienced when it hit the ground.
 
@@ -16,11 +16,12 @@ Cardboard, string, bubblewrap and plastic bags.
 # Experiment:
 1. Students are split into groups and tasked with using their materials to protect the microbit the best they can.
 2. The teacher can use the commander mode to setup the microbit the students are using to record accerelometer data and stream it back to the teachers microbit.
+
 ## MicroData setup:
 1. ![Select Commander mode](resources/selecting_commander_mode.png.png)
 2. Select 'Start Logging'
 
-3. Select the X, Y, Z accelerometers:
+3. Select the X, Y, Z accelerometers:<br>
 ![selecting_accelerometers](resources/selecting_accelerometers.png)<br>
 
 4. Configure the accelerometers to read only when the reading is above 50 using events:
