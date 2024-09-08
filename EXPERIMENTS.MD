@@ -17,14 +17,30 @@ Cardboard, string, bubblewrap and plastic bags.
 1. Students are split into groups and tasked with using their materials to protect the microbit the best they can.
 2. The teacher can use the commander mode to setup the microbit the students are using to record accerelometer data and stream it back to the teachers microbit.
 ## MicroData setup:
-1. Select Commander mode:
-[image]
-2. Select the X, Y, Z accelerometers:
-[image]
-3. Configure the accelerometers to read only when the reading is above 50 using events:
-[image]
+1. ![Select Commander mode](resources/selecting_commander_mode.png.png)
+2. Select 'Start Logging'
 
-3. Drop the students creations and see which one best protected the microbit.
+3. ![Select the X, Y, Z accelerometers](resources/selecting_accelerometers.png.png)
+
+4. Configure the accelerometers to read only when the reading is above 50 using events:
+![Press A on the first sensor.](resources/selecting_logging_settings_sensors.png)
+
+![Press A on measurements and then use Up and Down. Press A when you are done to confirm.](resources/selecting_measurement_qty.png)
+
+![Move Down to the Period/Event toggle.](resources/selecting_period_vs_event.png)
+
+![Press Left & Right to toggle between modes (Green is active, White is inactive). Then press A to continue.](resources/selecting_period_vs_event_2.png)
+
+![Use the Up and Down to change the inequality sign to a >](resources/selecting_inequality.png)
+
+![Press Right, then press Up to change the comparator to 50.](resources/selecting_comparator.png)
+
+![Press Done and repeat the configuration for the other sensors.](resources/selecting_logging_settings_2.png)
+
+
+3. When you have configured the last sensor the Target microbits that are connected to the Commander will receive their commands to record those 3 accelerometers. You will be brought back to the Commander mode screen.<br>
+
+The microbit is ready for the experiment!
 
 
 # Electro-Magnometry:
@@ -50,14 +66,12 @@ Optionally: resistors
 
 
 ## MicroData setup:
-1. On the MicroData home screen click on Real-time Data:
-[image]
+1. ![On the MicroData home screen click on Real-time Data](resources/selecting_realtime_data.png)
 
-2. Select the Analog pin 0 and the Magnet sensors:
-[image]
+2. ![Select the Analog pin 0 and the Magnet sensors](resources/selecting_analog_pin_0_and_magnet.png)
 
 3. Connect a wire to pin 0 on the Arcade shield
-[image]
+![image]()
 
 
 # Tests:
