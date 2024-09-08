@@ -20,23 +20,31 @@ Cardboard, string, bubblewrap and plastic bags.
 1. ![Select Commander mode](resources/selecting_commander_mode.png.png)
 2. Select 'Start Logging'
 
-3. ![Select the X, Y, Z accelerometers](resources/selecting_accelerometers.png.png)
+3. Select the X, Y, Z accelerometers:
+![selecting_accelerometers](resources/selecting_accelerometers.png)
 
 4. Configure the accelerometers to read only when the reading is above 50 using events:
-![Press A on the first sensor.](resources/selecting_logging_settings_sensors.png)
 
-![Press A on measurements and then use Up and Down. Press A when you are done to confirm.](resources/selecting_measurement_qty.png)
+Press A on the first sensor:
+![selecting_logging_settings_sensors](resources/selecting_logging_settings_sensors.png)
 
-![Move Down to the Period/Event toggle.](resources/selecting_period_vs_event.png)
+Press A on measurements and then use Up and Down. Press A when you are done to confirm:
+![selecting_measurement_qty](resources/selecting_measurement_qty.png)
 
-![Press Left & Right to toggle between modes (Green is active, White is inactive). Then press A to continue.](resources/selecting_period_vs_event_2.png)
+Move Down to the Period/Event toggle:
+![selecting_period_vs_event](resources/selecting_period_vs_event.png)
 
-![Use the Up and Down to change the inequality sign to a >](resources/selecting_inequality.png)
+Press Left & Right to toggle between modes (Green is active, White is inactive). Then press A to continue:
+![selecting_period_vs_event_2](resources/selecting_period_vs_event_2.png)
 
-![Press Right, then press Up to change the comparator to 50.](resources/selecting_comparator.png)
+Use the Up and Down to change the inequality sign to a >:
+![selecting_inequality](resources/selecting_inequality.png)
 
-![Press Done and repeat the configuration for the other sensors.](resources/selecting_logging_settings_2.png)
+Press Right, then press Up to change the comparator to 50:
+![selecting_comparator](resources/selecting_comparator.png)
 
+Press Done and repeat the configuration for the other sensors:
+![selecting_logging_settings_2](resources/selecting_logging_settings_2.png)
 
 3. When you have configured the last sensor the Target microbits that are connected to the Commander will receive their commands to record those 3 accelerometers. You will be brought back to the Commander mode screen.<br>
 
