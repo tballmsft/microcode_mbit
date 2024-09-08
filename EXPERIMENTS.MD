@@ -21,30 +21,30 @@ Cardboard, string, bubblewrap and plastic bags.
 2. Select 'Start Logging'
 
 3. Select the X, Y, Z accelerometers:
-![selecting_accelerometers](resources/selecting_accelerometers.png)
+![selecting_accelerometers](resources/selecting_accelerometers.png)<br>
 
 4. Configure the accelerometers to read only when the reading is above 50 using events:
 
 Press A on the first sensor:
-![selecting_logging_settings_sensors](resources/selecting_logging_settings_sensors.png)
+![selecting_logging_settings_sensors](resources/selecting_logging_settings_sensors.png)<br>
 
 Press A on measurements and then use Up and Down. Press A when you are done to confirm:
-![selecting_measurement_qty](resources/selecting_measurement_qty.png)
+![selecting_measurement_qty](resources/selecting_measurement_qty.png)<br>
 
 Move Down to the Period/Event toggle:
-![selecting_period_vs_event](resources/selecting_period_vs_event.png)
+![selecting_period_vs_event](resources/selecting_period_vs_event.png)<br>
 
 Press Left & Right to toggle between modes (Green is active, White is inactive). Then press A to continue:
-![selecting_period_vs_event_2](resources/selecting_period_vs_event_2.png)
+![selecting_period_vs_event_2](resources/selecting_period_vs_event_2.png)<br>
 
 Use the Up and Down to change the inequality sign to a >:
-![selecting_inequality](resources/selecting_inequality.png)
+![selecting_inequality](resources/selecting_inequality.png)<br>
 
 Press Right, then press Up to change the comparator to 50:
-![selecting_comparator](resources/selecting_comparator.png)
+![selecting_comparator](resources/selecting_comparator.png)<br>
 
 Press Done and repeat the configuration for the other sensors:
-![selecting_logging_settings_2](resources/selecting_logging_settings_2.png)
+![selecting_logging_settings_2](resources/selecting_logging_settings_2.png)<br>
 
 3. When you have configured the last sensor the Target microbits that are connected to the Commander will receive their commands to record those 3 accelerometers. You will be brought back to the Commander mode screen.<br>
 
