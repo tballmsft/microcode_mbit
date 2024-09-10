@@ -7,7 +7,6 @@ namespace microcode {
         version?: string
     }
 
-
     /**
      * If an Arcade Shield is not present when starting MicroData that Microbit will enter DistributedLoggingProtocol.
      *      It will show a :) on its LEDs and try to become a Target - where it will receive radio commands from a Commander Microbit (one with an Arcade Shield)
@@ -21,11 +20,9 @@ namespace microcode {
             reportEvent("app.start")
 
             this.sceneManager = new SceneManager()
-
             datalogger.includeTimestamp(FlashLogTimeStampFormat.None)
             
-            const arcadeShieldConnected = screenhelpers.displayPresent();
-            if (arcadeShieldConnected)
+            if (screenhelpers.displayPresent())
                 this.pushScene(new Home(this))
             else
                 new DistributedLoggingProtocol(this, false);
