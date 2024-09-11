@@ -7,11 +7,10 @@ This guide details 4 potential use cases and experiments you can perform with Mi
 
 
 # Electro-Magnets:
-MicroData lets you leverage the onboard magnometer to measure magnetic force in real-time.<br>
-This experiment investigates how the voltage, number of turns of wire and distance magnetic field of an electro-magnet.<br>
+MicroData lets you leverage the onboard magnometer to measure magnetic force from an electro-magnet in real-time.<br>
+This experiment investigates how the voltage, number of turns of wire and distance affect the magnetic field of an electro-magnet.<br>
 
 [BBC-Bitesize Resource](https://www.bbc.co.uk/bitesize/guides/zvk4t39/revision/6)
-
 
 ### Requirements:
 9 Volt or 12 Volt battery, copper wire, an iron nail.<br>
@@ -38,17 +37,17 @@ Optionally: resistors<br>
 ![Press Done and see the micro-tesla readings from the magnometer.](resources/experiment_images/electro_magnet_reading.png)
 
 ## Tests:
-1. What is the base reading on the magnometer when there are is no electro-magnet nearby?
+1. What is the base reading on the magnometer when there is no electro-magnet nearby?
 
-2. What is the reading on the magnometer when using a 9 Volt battery with 15 turns of wire when 5cm away from the microbit?
+2. What is the reading on the magnometer when using a 9 Volt battery with 15 turns of wire, when 5cm away from the microbit?
 
-3. What is the reading on the magnometer when using a 9 Volt battery with 15 turns of wire when 1cm away from the microbit?
+3. What is the reading on the magnometer when using a 9 Volt battery with 15 turns of wire, when 1cm away from the microbit?
 
-4. What is the reading on the magnometer when using a 9 Volt battery with 30 turns of wire when 10cm away from the microbit?
+4. What is the reading on the magnometer when using a 9 Volt battery with 30 turns of wire, when 10cm away from the microbit?
 
-5. What is the reading on the magnometer when using a 9 Volt battery with 30 turns of wire when 5cm away from the microbit?
+5. What is the reading on the magnometer when using a 9 Volt battery with 30 turns of wire, when 5cm away from the microbit?
 
-6. What is the reading on the magnometer when using a 9 Volt battery with 30 turns of wire when 1cm away from the microbit?
+6. What is the reading on the magnometer when using a 9 Volt battery with 30 turns of wire, when 1cm away from the microbit?
 
 
 ## Questions:
@@ -67,7 +66,7 @@ Cardboard, string, bubblewrap and plastic bags.<br>
 
 # Experiment:
 1. Students are split into groups and tasked with using their materials to protect the microbit the best they can.
-2. The teacher can use the commander mode to setup the microbit the students are using to record accerelometer data and stream it back to the teachers microbit.
+2. The teacher can use the commander mode to setup the microbits the students are using to record accerelometer data and stream it back to the teacher.
 
 ## MicroData setup:
 1. Commander to control the Microbit that will be dropped:<br>
@@ -75,7 +74,7 @@ Cardboard, string, bubblewrap and plastic bags.<br>
 2. Select 'Start Logging'
 
 3. Select the X, Y, Z accelerometers:<br>
-![selecting_accelerometers](resources/selecting_accelerometers.png)<br>
+![selecting_accelerometers](resources/selecting_accelerometers.png)
 
 4. Configure the accelerometers to read only when the reading is above 50 using events:
 
@@ -101,6 +100,7 @@ Press Done and repeat the configuration for the other sensors:<br>
 ![selecting_logging_settings_2](resources/selecting_logging_settings_2.png)
 
 3. When you have configured the last sensor the Target microbits that are connected to the Commander will receive their commands to record those 3 accelerometers. You will be brought back to the Commander mode screen.<br>
+
 
 The microbit is ready for the experiment!
 
@@ -146,8 +146,7 @@ Each student or group of students needs a Microbit + Arcade Shield & a soil mois
 Student(s) have a unique water plan to follow - for example watering each plant every other day - or giving each plant a small amount of water every day.
 
 ## Experiment:​
-Each day the student(s) measure the height 
-
-Each day they will follow their water plan and note down the height of the plant. At the end of the experiment the student(s) can make a table in their notebook(s) from the readings saved on the micro:bit and the corresponding height of the plant.​
-
-The student(s) can then share their results with the class to create a full table of data and analyse how a plant's height is affected by how it is watered.​
+1. Each day the student(s) measure the height of their plant.
+2. Each day they will follow their water plan. 
+3. At the end of the experiment the student(s) can make a table in their notebook(s) from the readings saved on the micro:bit and the corresponding height of the plant.​
+4. The student(s) can then share their results with the rest of the class to create a full table of data and analyse how a plant's height is affected by how it is watered.​
