@@ -1,5 +1,5 @@
 # Experiments:
-This guide details 5 potential use cases and experiments you can perform with MicroData:
+This guide details 4 potential use cases and experiments you can perform with MicroData:
 1. [Electro-magnets](#Electro-Magnets)
 2. [Micro-drop](#Micro-drop)
 4. [Noise insulation](#Noise-insulation)
@@ -7,9 +7,8 @@ This guide details 5 potential use cases and experiments you can perform with Mi
 
 
 # Electro-Magnets:
-MicroData lets you leverage the onboard magnometer and analog pins to measure both current and magnetic force in real-time.<br>
-This experiment investigates how the voltage, number of turns of wire and the wires resitance affects the magnetic field of an electro-magnet.<br>
-Student(s) fill out a worksheet that tasks them with building electro-magnets that each have unique specifications - such as a different voltage battery or using a resistor.<br>
+MicroData lets you leverage the onboard magnometer to measure magnetic force in real-time.<br>
+This experiment investigates how the voltage, number of turns of wire and distance magnetic field of an electro-magnet.<br>
 
 [BBC-Bitesize Resource](https://www.bbc.co.uk/bitesize/guides/zvk4t39/revision/6)
 
@@ -29,11 +28,14 @@ Optionally: resistors
 
 
 ## MicroData setup:
-1. ![On the MicroData home screen click on Real-time Data](resources/selecting_realtime_data.png)
+1. On the MicroData home screen click on Real-time Data:
+![On the MicroData home screen click on Real-time Data](resources/selecting_realtime_data.png)
 
-2. ![Select the Magnet sensor](resources/selecting_magnet.png)
+2. Select the Magnet sensor:
+![Select the Magnet sensor](resources/selecting_magnet.png)
 
-3. ![Press Done and see the micro-tesla readings from the magnometer.](resources/experiment_images/electro_magnet_reading.png)
+3. Press Done and see the micro-tesla readings from the magnometer:
+![Press Done and see the micro-tesla readings from the magnometer.](resources/experiment_images/electro_magnet_reading.png)
 
 
 ## Tests:
