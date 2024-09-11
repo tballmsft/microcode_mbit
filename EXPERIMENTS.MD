@@ -1,9 +1,62 @@
 # Experiments:
 This guide details 5 potential use cases and experiments you can perform with MicroData:
-1. [Electro-magnets](#Electro-Magnometry)
+1. [Electro-magnets](#Electro-Magnets)
 2. [Micro-drop](#Micro-drop)
-3. [Botany experiment](#Botany-Experiment)
 4. [Noise insulation](#Noise-insulation)
+3. [Biology experiment](#Biology-Experiment)
+
+
+# Electro-Magnets:
+MicroData lets you leverage the onboard magnometer and analog pins to measure both current and magnetic force in real-time.<br>
+This experiment investigates how the voltage, number of turns of wire and the wires resitance affects the magnetic field of an electro-magnet.<br>
+Student(s) fill out a worksheet that tasks them with building electro-magnets that each have unique specifications - such as a different voltage battery or using a resistor.<br>
+
+[BBC-Bitesize Resource](https://www.bbc.co.uk/bitesize/guides/zvk4t39/revision/6)
+
+
+### Requirements:
+9 Volt or 12 Volt battery, copper wire, an iron nail.<br>
+Microbit + Arcade Shield.<br>
+Optionally: resistors
+
+# Experiment:
+## How to build an electro-magnet:
+1. Wrap the copper wire around the iron nail:
+[image]
+
+2. Connect one of the ends of wire to the positive terminal and the other end to the negative terminal on the battery:
+[image]
+
+
+## MicroData setup:
+1. ![On the MicroData home screen click on Real-time Data](resources/selecting_realtime_data.png)
+
+2. ![Select the Magnet sensor](resources/selecting_magnet.png)
+
+3. ![Press Done and see the micro-tesla readings from the magnometer.](resources/experiment_images/electro_magnet_reading.png)
+
+
+## Tests:
+1. What is the base reading on the magnometer when there are is no electro-magnet nearby?
+
+2. What is the reading on the magnometer when using a 9 Volt battery with 15 turns of wire when 5cm away from the microbit?
+
+3. What is the reading on the magnometer when using a 9 Volt battery with 15 turns of wire when 1cm away from the microbit?
+
+4. What is the reading on the magnometer when using a 9 Volt battery with 30 turns of wire when 10cm away from the microbit?
+
+5. What is the reading on the magnometer when using a 9 Volt battery with 30 turns of wire when 5cm away from the microbit?
+
+6. What is the reading on the magnometer when using a 9 Volt battery with 30 turns of wire when 1cm away from the microbit?
+
+
+## Questions:
+1. Name one control variable and why it was important.
+
+2. Which setup had the highest reading on the magnometer?
+
+3. Create a graph with the magnometer reading on the y-axis and the distance on the x-axis. Using the data from Tests 4, 5 & 6.
+
 
 # Micro-drop:
 Students need to build a container for their microbit to protect it when dropped from a height.<br>
@@ -64,58 +117,6 @@ The microbit is ready for the experiment!
 ![Parachute](resources/experiment_images/microbit_w_battery_radio_covered_parachute.png)
 
 
-# Electro-Magnometry:
-MicroData lets you leverage the onboard magnometer and analog pins to measure both current and magnetic force in real-time.<br>
-This experiment investigates how the voltage, number of turns of wire and the wires resitance affects the magnetic field of an electro-magnet.<br>
-Student(s) fill out a worksheet that tasks them with building electro-magnets that each have unique specifications - such as a different voltage battery or using a resistor.<br>
-
-[BBC-Bitesize Resource](https://www.bbc.co.uk/bitesize/guides/zvk4t39/revision/6)
-
-
-### Requirements:
-9 Volt or 12 Volt battery, copper wire, an iron nail.<br>
-Microbit + Arcade Shield.<br>
-Optionally: resistors
-
-# Experiment:
-## How to build an electro-magnet:
-1. Wrap the copper wire around the iron nail:
-[image]
-
-2. Connect one of the ends of wire to the positive terminal and the other end to the negative terminal on the battery:
-[image]
-
-
-## MicroData setup:
-1. ![On the MicroData home screen click on Real-time Data](resources/selecting_realtime_data.png)
-
-2. ![Select the Magnet sensor](resources/selecting_magnet.png)
-
-3. ![Press Done and see the micro-tesla readings from the magnometer.](resources/experiment_images/electro_magnet_reading.png)
-
-
-## Tests:
-1. What is the base reading on the magnometer when there are is no electro-magnet nearby?
-
-2. What is the reading on the magnometer when using a 9 Volt battery with 15 turns of wire when 5cm away from the microbit?
-
-3. What is the reading on the magnometer when using a 9 Volt battery with 15 turns of wire when 1cm away from the microbit?
-
-4. What is the reading on the magnometer when using a 9 Volt battery with 30 turns of wire when 10cm away from the microbit?
-
-5. What is the reading on the magnometer when using a 9 Volt battery with 30 turns of wire when 5cm away from the microbit?
-
-6. What is the reading on the magnometer when using a 9 Volt battery with 30 turns of wire when 1cm away from the microbit?
-
-
-## Questions:
-1. Name one control variable and why it was important.
-
-2. Which setup had the highest reading on the magnometer?
-
-3. Create a graph with the magnometer reading on the y-axis and the distance on the x-axis. Using the data from Tests 4, 5 & 6.
-
-
 # Noise insulation:
 This experiment investigates the good different materials are at insulating noise.<br>
 
@@ -136,7 +137,6 @@ A box for the microbit.
 4. All the students can make lots of noise for 10 seconds.
 
 5. The teacher can see which microbit recorded the least noise; pronouncing the winning group.
-
 
 
 # Biology Experiment:
