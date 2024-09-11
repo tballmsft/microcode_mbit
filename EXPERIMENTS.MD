@@ -18,7 +18,8 @@ Cardboard, string, bubblewrap and plastic bags.
 2. The teacher can use the commander mode to setup the microbit the students are using to record accerelometer data and stream it back to the teachers microbit.
 
 ## MicroData setup:
-1. ![Select Commander mode](resources/selecting_commander_mode.png.png)
+1. Commander to control the Microbit that will be dropepd:
+![Select Commander mode](resources/selecting_commander_mode.png.png)
 2. Select 'Start Logging'
 
 3. Select the X, Y, Z accelerometers:<br>
@@ -52,12 +53,23 @@ Press Done and repeat the configuration for the other sensors:<br>
 The microbit is ready for the experiment!
 
 
+## Example build:
+1. Get the Microbit and connect it to a battery:
+![Microbit + Battery requirement](resources/experiment_images/microbit_w_battery_radio.png)
+
+2. Protect the microbit with bubble-wrap:
+![Protecting the microbit](resources/experiment_images/microbit_w_battery_radio_covered.png)
+
+3. Build a make-shift parachute to ease its descent:
+![Parachute](resources/experiment_images/microbit_w_battery_radio_covered_parachute.png)
+
+
 # Electro-Magnometry:
 MicroData lets you leverage the onboard magnometer and analog pins to measure both current and magnetic force in real-time.<br>
 This experiment investigates how the voltage, number of turns of wire and the wires resitance affects the magnetic field of an electro-magnet.<br>
 Student(s) fill out a worksheet that tasks them with building electro-magnets that each have unique specifications - such as a different voltage battery or using a resistor.<br>
 
-![BBC-Bitesize Resource](https://www.bbc.co.uk/bitesize/guides/zvk4t39/revision/6)
+[BBC-Bitesize Resource](https://www.bbc.co.uk/bitesize/guides/zvk4t39/revision/6)
 
 
 ### Requirements:
@@ -77,45 +89,31 @@ Optionally: resistors
 ## MicroData setup:
 1. ![On the MicroData home screen click on Real-time Data](resources/selecting_realtime_data.png)
 
-2. ![Select the Analog pin 0 and the Magnet sensors](resources/selecting_analog_pin_0_and_magnet.png)
+2. ![Select the Magnet sensor](resources/selecting_magnet.png)
 
-3. Connect a wire to pin 0 on the Arcade shield
-![image]()
-
-
-# Tests:
-1. What is the reading on the magnometer when using a 9 Volt battery with 30 turns of wire and no resistor?
-
-2. What is the reading on the magnometer when using a 12 Volt battery with 30 turns of wire and no resistor?
-
-3. What is the reading on the magnometer when using a 9 Volt battery with 15 turns of wire and no resistor?
-
-4. What is the reading on the magnometer when using a 9 Volt battery with 15 turns of wire and a 10 ohm resistor resistor?
+3. ![Press Done and see the micro-tesla readings from the magnometer.](resources/experiment_images/electro_magnet_reading.png)
 
 
-# Questions:
-1. Name one control variable and why it is important.
+## Tests:
+1. What is the base reading on the magnometer when there are is no electro-magnet nearby?
+
+2. What is the reading on the magnometer when using a 9 Volt battery with 15 turns of wire when 5cm away from the microbit?
+
+3. What is the reading on the magnometer when using a 9 Volt battery with 15 turns of wire when 1cm away from the microbit?
+
+4. What is the reading on the magnometer when using a 9 Volt battery with 30 turns of wire when 10cm away from the microbit?
+
+5. What is the reading on the magnometer when using a 9 Volt battery with 30 turns of wire when 5cm away from the microbit?
+
+6. What is the reading on the magnometer when using a 9 Volt battery with 30 turns of wire when 1cm away from the microbit?
+
+
+## Questions:
+1. Name one control variable and why it was important.
 
 2. Which setup had the highest reading on the magnometer?
 
-3. Create a graph with the magnometer reading on the y-axis and the number of turns of wire on the x-axis, using the data from the tests that used the 9 Volt battery and no resistor.
-
-
-# Botany Experiment:
-How does the amount of water and the frequency of watering a plant affect its growth?
-
-### Requirements:
-Each student or group of students needs a Microbit + Arcade Shield & a soil moisture sensor.<br>
-Student(s) have a unique water plan to follow - for example watering each plant every other day - or giving each plant a small amount of water every day.
-
-
-### Experiment:​
-Each day the student(s) measure the height 
-
-Each day they will follow their water plan and note down the height of the plant. At the end of the experiment the student(s) can make a table in their notebook(s) from the readings saved on the micro:bit and the corresponding height of the plant.​
-
-
-The student(s) can then share their results with the class to create a full table of data and analyse how a plant's height is affected by how it is watered.​
+3. Create a graph with the magnometer reading on the y-axis and the distance on the x-axis. Using the data from Tests 4, 5 & 6.
 
 
 # Noise insulation:
@@ -128,7 +126,31 @@ A box for the microbit.
 
 ## Experiment:
 1. Each group places their microbit with its battery into their box.
+![Microbit in a box](resources/experiment_images/microbit_in_box.png)
+
 2. They are tasked with using their material to insulate their microbit from noise as well as they can.
+![Insulated Microbit in a box](resources/experiment_images/microbit_in_box_covered.jpg)
+
 3. The teacher uses the commander mode to make all of the microbits record volume using their microphone for 5 seconds and stream it back to the teachers microbit.
+
 4. All the students can make lots of noise for 10 seconds.
+
 5. The teacher can see which microbit recorded the least noise; pronouncing the winning group.
+
+
+
+# Biology Experiment:
+How does the amount of water and the frequency of watering a plant affect its growth?
+
+## Requirements:
+Each student or group of students needs a Microbit + Arcade Shield & a soil moisture sensor.<br>
+Student(s) have a unique water plan to follow - for example watering each plant every other day - or giving each plant a small amount of water every day.
+
+
+## Experiment:​
+Each day the student(s) measure the height 
+
+Each day they will follow their water plan and note down the height of the plant. At the end of the experiment the student(s) can make a table in their notebook(s) from the readings saved on the micro:bit and the corresponding height of the plant.​
+
+
+The student(s) can then share their results with the class to create a full table of data and analyse how a plant's height is affected by how it is watered.​
