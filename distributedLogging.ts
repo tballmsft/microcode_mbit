@@ -272,6 +272,15 @@ namespace microcode {
         }
 
 
+        //------------------------
+        // Target-only Methods:
+        //------------------------
+
+        private addSensor(sensor: Sensor) {
+            this.sensors.push(sensor);
+        }
+
+
         private becomeTarget() {
             /**
              * Internal function responsible for choosing the correct response to the incoming message.
@@ -334,7 +343,7 @@ namespace microcode {
                             sensor.setConfig({measurements, period: SENSOR_EVENT_POLLING_PERIOD_MS, inequality, comparator})
                         }
 
-                        this.sensors.push(sensor)
+                        this.addSensor(sensor)
 
                         // Reset state after all messages for this request are handled:
                         if (this.numberOfMessagesReceived >= this.numberOfMessagesExpected) {
@@ -412,11 +421,11 @@ namespace microcode {
                  * INCOMING DATA STREAM
                  */
                 else if (message[MESSAGE_COMPONENT.NETWORK_COMMAND] == NETWORK_COMMAND_STRING[NETWORK_COMMAND.DATA_STREAM]) {
-                    DistributedLoggingScreen.streamingDone = false
-                    DistributedLoggingScreen.showTabularData = true
-                    TabularDataViewer.updateDataRowsOnNextFrame = true
+                    DistributedLoggingScreen.streamingDone = false;
+                    DistributedLoggingScreen.showTabularData = true;
+                    TabularDataViewer.updateDataRowsOnNextFrame = true;
 
-                    const cols = message.slice(MESSAGE_COMPONENT.DATA_START)
+                    const cols = message.slice(MESSAGE_COMPONENT.DATA_START);
 
                     datalogger.log(
                         datalogger.createCV("Microbit", cols[0]),
@@ -424,7 +433,7 @@ namespace microcode {
                         datalogger.createCV("Time (ms)", cols[2]),
                         datalogger.createCV("Reading", cols[3]),
                         datalogger.createCV("Event", cols[4])
-                    )
+                    );
                 }
             })
         }   
