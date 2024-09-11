@@ -20,10 +20,10 @@ Optionally: resistors<br>
 # Experiment:
 ## How to build an electro-magnet:
 1. Wrap the copper wire around the iron nail:<br>
-[image]
+![Electro-magnet](resources/experiment_images/electro_magnet.png)
 
-2. Connect one of the ends of wire to the positive terminal and the other end to the negative terminal on the battery:<br>
-[image]
+2. Turn your battery off, then connect one of the ends of wire to the positive terminal and the other end to the negative terminal:<br>
+![Electro-magnet](resources/experiment_images/electro_magnet_powered.png)
 
 
 ## MicroData setup:
