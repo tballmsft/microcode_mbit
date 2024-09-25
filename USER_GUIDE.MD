@@ -23,6 +23,18 @@ MicroData can be used to see the readings of multiple sensors at once in real-ti
 
 Selecting the analog pins as sensors and connecting a wire to the pins of the Arcade Shield will allow you to see the flow of current in real-time. 
 
+
+# No-Arcade-Shield-Mode
+When a microbit is powered without an Arcade Shield connected it will cycle between animations of sensors. You can press A to start recording this sensor, or B to go to the next sensor; every second a log will be made - which can be viewed by connecting the microbit to a computer or Arcade Shield. Pressing B will stop the recording. This mode also workss as a context-aware interface: shaking the microbit will show the accelerometer option, holding a magnet to it will show the magnet option, etc.<br>
+
+### No-Arcade-Shield-Mode sensor options:
+1. Accelerometer: records on the X, Y, Z dimension.
+2. Temperature (Celcius).
+3. Light.
+4. Magnet.
+5. Radio: This Microbit will become a 'Target' it will passively listen to commands from the 'Commander' microbit. There can only be one Commander and it must have an Arcade Shield.
+
+
 # Recording data
 MicroData allows you to select and independently configure multiple sensors to log at once. The information about the sensor, the time the reading was taken and the value of the sensor are stored in flash storage. This means that the information persists even when unpowered, and that you can see them on device. These logs can be viewed in a tabular format without the need of an connection to an external device. Connecting the microbit to a computer also allows you to get the MY_DATA.HTM file that contains these logs. Below are images of the tabular data viewer - which shows the logs for the 3 accelerometers.
 
