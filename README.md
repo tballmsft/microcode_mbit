@@ -18,7 +18,11 @@ MicroData makes it easy to select and configure sensors. The data collected thro
 
 **You will need an Arcade Shield for the micro:bit V2 to make use of MicroData.**
 
-### Building
+
+# Experiments
+A walkthrough of some of the experiments you can do with MicroData are available in ![EXPERIMENTS.MD](https://github.com/KierPalin/MicroData/blob/main/EXPERIMENTS.MD).
+
+# Building
 
 ### Via MakeCode CLI (recommended)
 
@@ -29,9 +33,4 @@ MicroData makes it easy to select and configure sensors. The data collected thro
 
 #### Via Web App
 
-You need to use https://makecode.microbit.org/beta currently to build MicroData. You can load this repo into MakeCode using the Import button in the home page and selecting "Import URL". Please note that there is currently no simulator support for the arcade shield extension (https://github.com/microsoft/pxt-arcadeshield) that MicroData depends on. 
-```
-
-
-
-
+You need to use https://makecode.microbit.org/beta currently to build MicroData. You can load this repo into MakeCode using the Import button in the home page and selecting "Import URL". Please note that there is currently no simulator support for the arcade shield extension (https://github.com/microsoft/pxt-arcadeshield) that MicroData depends on.
