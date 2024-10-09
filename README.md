@@ -1,4 +1,5 @@
 # MicroData
+
 ![home_screen](https://github.com/KierPalin/MicroData/blob/main/resources/MicroData_1_5.png?raw=true)
 
 An application for the Microbit V2 + an Arcade shield that makes collecting data from the Microbit's sensors easy and fun. MicroData can be used to enhance scientific experiments inside & outside of the classroom - without the need for an external computer. MicroData allows you to:
@@ -20,7 +21,17 @@ MicroData makes it easy to select and configure sensors. The data collected thro
 
 
 # Experiments
+
 A walkthrough of some of the experiments you can do with MicroData are available in ![EXPERIMENTS.MD](https://github.com/KierPalin/MicroData/blob/main/EXPERIMENTS.MD).
+
+
+# Releases
+
+The binary.hex files for the most recent releases of MicroData are available ![here](https://github.com/KierPalin/MicroData/releases).<br>
+There is currently a trade-off between microdata-v1.5.0 and microdata-no-jacdac-mode-v1.5.0. <br>
+* microdata-v1.5.0 has support for all sensors. When the Arcade Shield is not connected the microbit defaults to Commander mode (it listens to logging commands over the radio).
+* microdata-no-jacdac-mode-v1.5.0 does not support the Jacdac. When the Arcade Shield is not connected the microbit defaults to a mode that allows you to log data without an Arcade Shield (or enter Commander mode).
+
 
 # Building
 
