@@ -49,8 +49,7 @@
         "dataRecorder.ts",
         "tabularDataViewer.ts",
         "generateGraph.ts",
-        "distributedLogging.ts",
-        "noArcadeShieldMode.ts"
+        "distributedLogging.ts"
     ],
     "testFiles": [],
     "targetVersions": {

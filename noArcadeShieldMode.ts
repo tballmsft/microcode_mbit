@@ -1,5 +1,15 @@
 namespace microcode {
     /**
+     * This is presently unused on this /main branch due to memory constraints. The distributedLoggingProtocol is used in its stead.
+     * The no-jacdac-mode uses this feature fully, but with no Jacdac support.
+     * 
+     * This version supports the Radio logging in addition to its other logging modes.
+     * 
+     * In the future there shouldn't be a trade-off between these features.
+     */
+
+
+    /**
      * Sensor Selection cycles between 'animations' of the options; animations are an LED loop specific to that sensor.
      * Mutated by the A & B button
      */

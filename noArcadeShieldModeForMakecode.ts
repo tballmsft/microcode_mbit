@@ -1,4 +1,13 @@
 /**
+ * THIS FILE IS NOT USED BY MICRODATA.
+ * 
+ * This is the same as noArcadeShieldMode.ts but it has no dependencies.
+ * 
+ * This code may be copied directly into makecode to demo noArcadeShieldMode without requiring sensors.ts etc
+ */
+
+
+/**
  * Sensor Selection cycles between 'animations' of the options; animations are an LED loop specific to that sensor.
  * Mutated by the A & B button
  */
