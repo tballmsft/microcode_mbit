@@ -25,7 +25,7 @@ namespace microcode {
             if (screenhelpers.displayPresent())
                 this.pushScene(new Home(this))
             else
-                new NoArcadeShieldMode(this);
+                new DistributedLoggingProtocol(this, false);
         }
 
         public pushScene(scene: Scene) {
