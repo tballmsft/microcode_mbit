@@ -479,7 +479,7 @@ namespace microcode {
                 this.windowTopBuffer + this.yScrollOffset + this.yScrollOffset, 
                 Screen.WIDTH - this.windowLeftBuffer - this.windowRightBuffer,
                 this.windowHeight - this.windowBotBuffer - 4,
-                0
+                15
             );
 
             // Markers & axes:

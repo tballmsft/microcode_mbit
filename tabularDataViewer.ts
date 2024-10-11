@@ -355,7 +355,7 @@ namespace microcode {
                         Screen.TOP_EDGE,
                         Screen.LEFT_EDGE + cumulativeColOffset,
                         Screen.HEIGHT,
-                        0x0
+                        15
                     )
                 }
             }
@@ -366,7 +366,7 @@ namespace microcode {
                     Screen.TOP_EDGE + rowOffset,
                     Screen.WIDTH,
                     Screen.TOP_EDGE + rowOffset,
-                    0x0
+                    15
                 )
             }
 

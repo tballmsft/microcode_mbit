@@ -306,7 +306,7 @@ namespace microcode {
                 this.windowTopBuffer + this.yScrollOffset + this.yScrollOffset, 
                 Screen.WIDTH - this.windowLeftBuffer - this.windowRightBuffer,
                 this.windowHeight - this.windowBotBuffer - ((this.guiState == GUI_STATE.ZOOMED_IN) ? 0 : 4),
-                0
+                15
             );
 
             //-------------------------------
