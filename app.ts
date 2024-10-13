@@ -22,7 +22,7 @@ namespace microcode {
             this.sceneManager = new SceneManager()
             datalogger.includeTimestamp(FlashLogTimeStampFormat.None)
 
-            if (screenhelpers.displayPresent())
+            if (shieldhelpers.shieldPresent())
                 this.pushScene(new Home(this))
             else
                 new DistributedLoggingProtocol(this, false);
