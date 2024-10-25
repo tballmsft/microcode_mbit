@@ -94,6 +94,8 @@ namespace microcode {
         /** Greatest of sensor.maximum for all sensors: required to write at the top of the y-axis */
         private globalSensorMaximum: number;
 
+        private splineCoords: number[][]
+
         constructor(app: App) {
             super(app, "graphGeneration")
             this.backgroundColor = 3
@@ -484,6 +486,71 @@ namespace microcode {
 
             // Markers & axes:
             this.draw_axes();
+
+            // const num_samples = 10;
+            // this.splineCoords = []
+            // for i in range(1, len(points) - 1):
+            //     P0 = points[i - 1]
+            //     P1 = points[i]
+            //     P2 = points[i + 1]
+            //     P3 = points[i + 2]
+
+            //     for t in range(num_samples):
+            //         t = t / num_samples
+            //         x = 0.5 * ((2 * P1_x) + 
+            //                 (-P0_x + P2_x) * t + 
+            //                 (2 * P0_x - 5 * P1_x + 4 * P2_x - P3_x) * t * t + 
+            //                 (-P0_x + 3 * P1_x - 3 * P2_x + P3_x) * t * t * t)
+
+            //         y = 0.5 * ((2 * P1_y) + 
+            //                 (-P0_y + P2_y) * t + 
+            //                 (2 * P0_y - 5 * P1_y + 4 * P2_y - P3_y) * t * t + 
+            //                 (-P0_y + 3 * P1_y - 3 * P2_y + P3_y) * t * t * t)
+
+            //         result.append((x, y))
+
+            // basic.showString("S")
+
+            // for (let sensor = 0; sensor < this.sensors.length; sensor++) {
+            //     for (let i = 2; i < this.processedCoordinates[sensor].length - 6; i+=2) {
+            //         const P0_x = this.processedCoordinates[sensor][i - 2]
+            //         const P0_y = this.processedCoordinates[sensor][i - 2 + 1]
+            //         const P1_x = this.processedCoordinates[sensor][i]
+            //         const P1_y = this.processedCoordinates[sensor][i + 1]
+            //         const P2_x = this.processedCoordinates[sensor][i + 2]
+            //         const P2_y = this.processedCoordinates[sensor][i + 2 + 1]
+            //         const P3_x = this.processedCoordinates[sensor][i + 4]
+            //         const P3_y = this.processedCoordinates[sensor][i + 4 + 1]
+
+            //         // this.processedCoordinates[sensor][i]
+            //         // this.processedCoordinates[sensor][i+1]
+            //         // this.processedCoordinates[sensor][i+2]
+            //         // this.processedCoordinates[sensor][i+3]
+
+            //         for (let t = 0; t < num_samples; t++) {
+            //             const t_step = t / num_samples
+
+            //             this.splineCoords.push([
+            //                 0.5 * ((2 * P1_x) + 
+            //                     (-P0_x + P2_x) * t + 
+            //                     (2 * P0_x - 5 * P1_x + 4 * P2_x - P3_x) * t_step * t_step + 
+            //                     (-P0_x + 3 * P1_x - 3 * P2_x + P3_x) * t_step * t_step * t_step),
+            //                 0.5 * ((2 * P1_y) + 
+            //                     (-P0_y + P2_y) * t + 
+            //                     (2 * P0_y - 5 * P1_y + 4 * P2_y - P3_y) * t_step * t_step + 
+            //                     (-P0_y + 3 * P1_y - 3 * P2_y + P3_y) * t_step * t_step * t_step)
+            //             ])
+            //         }
+            //     }
+            // }
+
+            // basic.showString("Y")
+
+            // # Use the result to draw lines
+            // points_to_draw = catmull_rom_spline(your_points_array)
+            // for i in range(len(points_to_draw) - 1):
+            //     drawLine(points_to_draw[i], points_to_draw[i + 1])
+
             
             //------------------
             // Draw sensor data:
@@ -495,8 +562,15 @@ namespace microcode {
                     for (let i = 0; i < this.processedCoordinates[sensor].length - 4; i+=2) {
                         // Not disabled:
                         if (this.drawSensorStates[this.sensors[sensor].getName()]) {
+                            const diff = Math.abs(this.processedCoordinates[sensor][i+1] - this.processedCoordinates[sensor][i+3])
+
+                            // const smoothing_rate = diff >= 15 ? 8 : 4
+                            const smoothing_rate = 1;
+
+                            // if (Math.abs(this.processedCoordinates[sensor][i+1] - this.processedCoordinates[sensor][i+3]) >= 0.)
+
                             // Duplicate the line along the y axis to smooth out aliasing:
-                            for (let j = -(PLOT_SMOOTHING_CONSTANT / 2); j < PLOT_SMOOTHING_CONSTANT / 2; j++) {
+                            for (let j = -(smoothing_rate / 2); j < smoothing_rate / 2; j++) {
                                 screen().drawLine(
                                     this.processedCoordinates[sensor][i]   + 1,
                                     this.processedCoordinates[sensor][i+1] + j,
@@ -509,6 +583,35 @@ namespace microcode {
                     }
                 }
             }
+
+            // if (this.yScrollOffset > Y_SCROLL_GRAPH_MODE_CUT_OFF) {
+            //     // Draw the data from each sensor, as a separate coloured line: sensors may have variable quantities of data:
+            //     for (let sensor = 0; sensor < this.sensors.length; sensor++) {
+            //         // Each coord in [x1, y1, x2, y2, x3, y3, ...]:
+            //         for (let i = 0; i < this.splineCoords[sensor].length - 4; i+=2) {
+            //             // Not disabled:
+            //             if (this.drawSensorStates[this.sensors[sensor].getName()]) {
+            //                 // const diff = Math.abs(this.processedCoordinates[sensor][i+1] - this.processedCoordinates[sensor][i+3])
+
+            //                 // const smoothing_rate = diff >= 15 ? 8 : 4
+            //                 const smoothing_rate = 1;
+
+            //                 // if (Math.abs(this.processedCoordinates[sensor][i+1] - this.processedCoordinates[sensor][i+3]) >= 0.)
+
+            //                 // Duplicate the line along the y axis to smooth out aliasing:
+            //                 for (let j = -(smoothing_rate / 2); j < smoothing_rate / 2; j++) {
+            //                     screen().drawLine(
+            //                         this.splineCoords[sensor][i]   + 1,
+            //                         this.splineCoords[sensor][i+1] + j,
+            //                         this.splineCoords[sensor][i+2] + 1,
+            //                         this.splineCoords[sensor][i+3] + j,
+            //                         SENSOR_COLORS[sensor % SENSOR_COLORS.length]
+            //                     );
+            //                 }
+            //             }
+            //         }
+            //     }
+            // }
             
             //---------------
             // Sensor blocks:
