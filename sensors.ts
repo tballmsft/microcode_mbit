@@ -222,6 +222,7 @@ namespace microcode {
             // The number of measurements this sensor has left is displayed on the microbit 5x5 led grid; when the Arcade Shield is not connected.
             this.sensorWithMostTimeLeft = sensors[0]
             let mostTimeLeft = this.sensorWithMostTimeLeft.totalMeasurements * this.sensorWithMostTimeLeft.getPeriod()
+
             this.sensors.forEach(sensor => {
                 if ((sensor.totalMeasurements * sensor.getPeriod()) > mostTimeLeft) {
                     mostTimeLeft = sensor.totalMeasurements * sensor.getPeriod()

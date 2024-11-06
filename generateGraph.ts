@@ -564,8 +564,8 @@ namespace microcode {
                         if (this.drawSensorStates[this.sensors[sensor].getName()]) {
                             const diff = Math.abs(this.processedCoordinates[sensor][i+1] - this.processedCoordinates[sensor][i+3])
 
-                            // const smoothing_rate = diff >= 15 ? 8 : 4
-                            const smoothing_rate = 1;
+                            const smoothing_rate = diff >= 15 ? 8 : 4
+                            // const smoothing_rate = 1;
 
                             // if (Math.abs(this.processedCoordinates[sensor][i+1] - this.processedCoordinates[sensor][i+3]) >= 0.)
 
