@@ -4,8 +4,12 @@ namespace microcode {
         private recordDataBtn: Button
         private distributedLoggingBtn: Button
         private viewBtn: Button
+        private tagline: string;
 
-        constructor(app: App) {super(app)}
+        constructor(app: App) {
+            super(app)
+            this.tagline = ["Lets measure!", "Hello :)", "Lets experiment!", "Mini-measurer", "Record & view"][randint(0, 4)]
+        }
 
         /* override */ startup() {
             super.startup()
@@ -71,8 +75,8 @@ namespace microcode {
         private drawVersion() {
             const font = bitmaps.font5
             Screen.print(
-                "v1.5",
-                Screen.RIGHT_EDGE - font.charWidth * "v1.5".length,
+                "v1.5.1",
+                Screen.RIGHT_EDGE - font.charWidth * "v1.5.1".length,
                 Screen.BOTTOM_EDGE - font.charHeight - 2,
                 0xb,
                 font
@@ -110,14 +114,13 @@ namespace microcode {
             )
 
             if (!this.yOffset) {
-                const tagline = resolveTooltip("Data Science!")
                 Screen.print(
-                    tagline,
+                    this.tagline,
                     Screen.LEFT_EDGE +
                         ((Screen.WIDTH + wordLogo.width) >> 1) 
                         + dy
                         -
-                        microcode.font.charWidth * tagline.length,
+                        microcode.font.charWidth * this.tagline.length,
                     Screen.TOP_EDGE +
                         OFFSET +
                         wordLogo.height +
