@@ -22,7 +22,8 @@ namespace microcode {
             this.sceneManager = new SceneManager()
             datalogger.includeTimestamp(FlashLogTimeStampFormat.None)
 
-            if (shieldhelpers.shieldPresent())
+            const arcadeShieldConnected = shieldhelpers.shieldPresent();
+            if (arcadeShieldConnected)
                 this.pushScene(new Home(this))
             else
                 new DistributedLoggingProtocol(this, false);
