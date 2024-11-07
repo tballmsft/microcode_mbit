@@ -245,10 +245,26 @@ namespace microcode {
                 ControllerButtonEvent.Pressed,
                 controller.left.id,
                 () => {
-                    if (this.guiState == GUI_STATE.ZOOMED_IN && this.oscXCoordinate > 0) {
-                        this.oscXCoordinate -= 1
-                        this.oscReading = this.sensors[this.oscSensorIndex].getNthHeightNormalisedReading(this.oscXCoordinate)
-                        this.update() // For fast response to the above change
+                    if (this.guiState == GUI_STATE.ZOOMED_IN) {
+                        // this.oscXCoordinate -= 1
+                        // this.oscReading = this.sensors[this.oscSensorIndex].getNthHeightNormalisedReading(this.oscXCoordinate)
+                        // this.update() // For fast response to the above change
+
+                        let tick = true;
+                        control.onEvent(
+                            ControllerButtonEvent.Released,
+                            controller.left.id,
+                            () => tick = false
+                        )
+
+                        let isFirstTick = true
+                        while (tick && this.oscXCoordinate > 0) {
+                            this.oscXCoordinate -= 1
+                            this.oscReading = this.sensors[this.oscSensorIndex].getNthHeightNormalisedReading(this.oscXCoordinate)
+                            basic.pause(isFirstTick ? 100 : 33)
+                            isFirstTick = false
+                        }
+                        control.onEvent(ControllerButtonEvent.Released, controller.left.id, () => { })
                     }
                 }
             )
@@ -257,11 +273,21 @@ namespace microcode {
                 ControllerButtonEvent.Pressed,
                 controller.right.id,
                 () => {
-                    if (this.guiState == GUI_STATE.ZOOMED_IN && this.oscXCoordinate < this.sensors[this.oscSensorIndex].getHeightNormalisedBufferLength() - 1) {
-                        this.oscXCoordinate += 1
-                        this.oscReading = this.sensors[this.oscSensorIndex].getNthHeightNormalisedReading(this.oscXCoordinate)
-
-                        this.update() // For fast response to the above change
+                    if (this.guiState == GUI_STATE.ZOOMED_IN) {
+                        let tick = true;
+                        control.onEvent(
+                            ControllerButtonEvent.Released,
+                            controller.right.id,
+                            () => tick = false
+                        )
+                        let isFirstTick = true
+                        while (tick && this.oscXCoordinate < this.sensors[this.oscSensorIndex].getHeightNormalisedBufferLength() - 1) {
+                            this.oscXCoordinate += 1
+                            this.oscReading = this.sensors[this.oscSensorIndex].getNthHeightNormalisedReading(this.oscXCoordinate)
+                            basic.pause(isFirstTick ? 100 : 33)
+                            isFirstTick = false
+                        }
+                        control.onEvent(ControllerButtonEvent.Released, controller.right.id, () => { })
                     }
                 }
             )
