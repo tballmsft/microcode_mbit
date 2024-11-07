@@ -26,6 +26,11 @@ namespace microcode {
         /** For the currentSensorIndex */
         private sensorBoxColor: number;
 
+        private showCancelRecordingScreen: boolean;
+        private currentlyCancelling: boolean
+        private yesBtn: Sprite // currentBtn = 0
+        private noBtn: Sprite // currentBtn = 1
+
         constructor(app: App, sensors: Sensor[]) {
             super(app, "dataRecorder")
 
@@ -36,6 +41,8 @@ namespace microcode {
             this.sensorIndexOffset = 0 
             this.currentSensorIndex = 0
             this.sensorBoxColor = 15
+            this.showCancelRecordingScreen = false;
+            this.currentlyCancelling = false;
 
             //---------------
             // User Controls:
@@ -46,8 +53,7 @@ namespace microcode {
                 ControllerButtonEvent.Pressed,
                 controller.B.id,
                 () => {
-                    this.app.popScene()
-                    this.app.pushScene(new Home(this.app))
+                    this.showCancelRecordingScreen = !this.showCancelRecordingScreen
                 }
             )
 
@@ -55,7 +61,15 @@ namespace microcode {
             control.onEvent(
                 ControllerButtonEvent.Pressed,
                 controller.A.id,
-                () => {}
+                () => {
+                    if (this.showCancelRecordingScreen) {
+                        this.currentlyCancelling = true
+                        this.scheduler.stop()
+
+                        this.app.popScene()
+                        this.app.pushScene(new Home(this.app))
+                    }
+                }
             )
 
             // Scroll Up
@@ -85,6 +99,25 @@ namespace microcode {
                     this.update()
                 }
             )
+
+
+            // For cancelling the current recording:
+
+            this.yesBtn = new Sprite({ img: icons.get("tile_button_a") })
+            this.yesBtn.bindXfrm(new Affine())
+            this.yesBtn.xfrm.parent = new Affine()
+            this.yesBtn.xfrm.worldPos.x = Screen.HALF_WIDTH
+            this.yesBtn.xfrm.worldPos.y = Screen.HALF_HEIGHT
+            this.yesBtn.xfrm.localPos.x = -40
+            this.yesBtn.xfrm.localPos.y = 12
+
+            this.noBtn = new Sprite({ img: icons.get("tile_button_b") })
+            this.noBtn.bindXfrm(new Affine())
+            this.noBtn.xfrm.parent = new Affine()
+            this.noBtn.xfrm.worldPos.x = Screen.HALF_WIDTH
+            this.noBtn.xfrm.worldPos.y = Screen.HALF_HEIGHT
+            this.noBtn.xfrm.localPos.x = 40
+            this.noBtn.xfrm.localPos.y = 12
 
             this.log()
         }
@@ -191,6 +224,82 @@ namespace microcode {
                     }
 
                     y += 14
+                }
+
+                if (this.showCancelRecordingScreen) {
+                    const headerX = Screen.HALF_WIDTH // Log has data in it
+
+                    // Outline:
+                    screen().fillRect(
+                        Screen.HALF_WIDTH - 65,
+                        Screen.HALF_HEIGHT - 30,
+                        130 + 2,
+                        60 + 2,
+                        15 // Black
+                    )
+
+                    screen().fillRect(
+                        Screen.HALF_WIDTH - 65,
+                        Screen.HALF_HEIGHT - 30,
+                        130,
+                        60,
+                        4 // Orange
+                    )
+
+                    const tutorialTextLength = ("Cancel recording?".length * font.charWidth)
+                    screen().print(
+                        "Cancel recording?",
+                        headerX - (tutorialTextLength / 2),
+                        Screen.HALF_HEIGHT - 30 + 7,
+                        15 // Black
+                    )
+
+                    // Underline the title:
+                    screen().fillRect(
+                        headerX - (tutorialTextLength / 2) - 1,
+                        Screen.HALF_HEIGHT - 30 + 16,
+                        tutorialTextLength,
+                        2,
+                        15 // Black
+                    )
+
+                    if (this.currentlyCancelling)
+                        screen().printCenter("Cancelling...", Screen.HALF_HEIGHT - 9, 15)
+
+                    // Draw button prompts:
+                    screen().print(
+                        "Yes",
+                        Screen.HALF_WIDTH - 48,
+                        Screen.HALF_HEIGHT + 20,
+                        15
+                    )
+
+                    screen().print(
+                        "No",
+                        Screen.HALF_WIDTH + 33,
+                        Screen.HALF_HEIGHT + 20,
+                        15
+                    )
+
+                    // White boxes behind yes & no btns:
+                    screen().fillRect(
+                        Screen.HALF_WIDTH - 47,
+                        Screen.HALF_HEIGHT + 6,
+                        12,
+                        12,
+                        1
+                    )
+
+                    screen().fillRect(
+                        Screen.HALF_WIDTH + 34,
+                        Screen.HALF_HEIGHT + 6,
+                        12,
+                        12,
+                        1
+                    )
+
+                    this.yesBtn.draw()
+                    this.noBtn.draw()
                 }
             }
         }

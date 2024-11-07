@@ -211,6 +211,8 @@ namespace microcode {
         /** Should the information from the sensorWithMostTimeLeft be shown on the basic's 5x5 LED matrix? */
         private showOnBasicScreen: boolean = false;
 
+        private continueLogging: boolean;
+
         constructor(sensors: Sensor[], showOnBasicScreen?: boolean) {
             this.schedule = []
             this.sensors = sensors
@@ -230,6 +232,8 @@ namespace microcode {
                 }
             })
 
+            this.continueLogging = true;
+
             // Setup schedule so that periods are in order ascending
             sensors.sort((a, b) => a.getPeriod() - b.getPeriod())
             this.schedule = sensors.map((sensor) => {return {sensor, waitTime: sensor.getPeriod()}})
@@ -237,6 +241,11 @@ namespace microcode {
 
 
         loggingComplete(): boolean {return !(this.schedule.length > 0)}
+
+
+        stop() {
+            this.continueLogging = false;
+        }
 
 
         /**
@@ -278,7 +287,22 @@ namespace microcode {
                     const nextLogTime = this.schedule[0].waitTime;
                     const sleepTime = nextLogTime - currentTime;
 
-                    basic.pause(sleepTime + lastLogTime - input.runningTime()) // Discount for operation time
+
+                    // Wait the required period, discount operation time, in 100ms chunks
+                    // Check if there last been a request to stop logging each chunk
+
+                    const pauseTime = sleepTime + lastLogTime - input.runningTime() // Discount for operation time
+                    for (let i = 0; i < pauseTime; i+=100) {
+                        if (!this.continueLogging) {
+                            return
+                        }
+                        basic.pause(100)
+                    }
+                    basic.pause(pauseTime % 100)
+
+                    if (!this.continueLogging)
+                        break;
+
                     lastLogTime = input.runningTime()
                     currentTime += sleepTime
 
