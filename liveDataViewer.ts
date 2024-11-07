@@ -328,6 +328,7 @@ namespace microcode {
             // Draw sensor lines & ticker:
             //----------------------------
             if (this.guiState != GUI_STATE.SENSOR_SELECTION) {
+                let tickerYValues: number[] = []
                 for (let i = 0; i < this.sensors.length; i++) {
                     if (this.drawSensorStates[i]) {
                         const sensor = this.sensors[i]
@@ -335,7 +336,7 @@ namespace microcode {
 
                         // Draw lines:
                         sensor.draw(
-                            this.windowLeftBuffer + 3,
+                            this.windowLeftBuffer + 2,
                             color
                         )
 
@@ -346,16 +347,19 @@ namespace microcode {
                             const reading = sensor.getReading()
                             const range = Math.abs(sensor.getMinimum()) + sensor.getMaximum()
                             const y = Math.round(Screen.HEIGHT - ((((reading - sensor.getMinimum()) / range) * (BUFFERED_SCREEN_HEIGHT - fromY)))) - fromY
+                            
                             // Make sure the ticker won't be cut-off by other UI elements
-                            if (y > sensor.getMinimum() + 5) {
+                            if (!tickerYValues.some(v => Math.abs(v - y) <= 5) && (y < sensor.getMaximum() - 5 && y > sensor.getMinimum() + 5)) {
                                 screen().print(
                                     sensor.getNthReading(sensor.getBufferLength() - 1).toString().slice(0, 5),
-                                    Screen.WIDTH - this.windowRightBuffer - (4 * font.charWidth),
-                                    y,
+                                    this.windowLeftBuffer + sensor.getBufferLength() + 4,
+                                    y - 1,
                                     color,
                                     bitmaps.font5,
                                 )
                             }
+
+                            tickerYValues.push(y - 1)
                         }
                     }
                 }
