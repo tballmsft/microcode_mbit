@@ -8,13 +8,14 @@ namespace microcode {
 
         constructor(app: App) {
             super(app)
-            this.tagline = ["Lets measure!", "Hello :)", "Lets experiment!", "Mini-measurer", "Record & view"][randint(0, 4)]
+            this.tagline = ["Lets measure!", "Hello :)", "Lets experiment!", "Mini-measurer", 
+                            "Record & view", "Data Science toolkit", "Start experimenting!"][randint(0, 6)]
         }
 
         /* override */ startup() {
             super.startup()
 
-            const y = 26
+            const y = 25
 
             this.liveDataBtn = new Button({
                 parent: null,
