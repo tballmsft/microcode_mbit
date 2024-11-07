@@ -127,7 +127,7 @@ namespace microcode {
                         wordLogo.height +
                         dy +
                         this.yOffset +
-                        3,
+                        2,
                     0xb,
                     microcode.font
                 )

@@ -53,7 +53,14 @@ namespace microcode {
                 ControllerButtonEvent.Pressed,
                 controller.B.id,
                 () => {
-                    this.showCancelRecordingScreen = !this.showCancelRecordingScreen
+                    if (this.scheduler.loggingComplete()) {
+                        this.app.popScene()
+                        this.app.pushScene(new Home(this.app))
+                    }
+
+                    else {
+                        this.showCancelRecordingScreen = !this.showCancelRecordingScreen
+                    }
                 }
             )
 
