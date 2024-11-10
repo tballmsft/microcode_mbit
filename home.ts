@@ -1,151 +1,145 @@
-// input.onButtonPressed(Button.B, function () {
-//     y = Math.min(y + 10, 100)
-// })
-// let y = 0
-// const app = new microcode.App();
-// const calc = (arg0: microcode.GraphableFunction) => {
-//     app.popScene()
-//     app.pushScene(new microcode.LiveDataViewer(app, [arg0]))
-// }
-// const gf = new microcode.GraphableFunction((x) => y)
-// const w = new microcode.Window({
-//     app,
-//     components: [
-//         new microcode.GUIBox({
-//             alignment: microcode.GUIComponentAlignment.TOP,
-//             xOffset: 10,
-//             title: "Hello"
-//         }),
-//         // new microcode.GUIBox({
-//         //     alignment: microcode.GUIComponentAlignment.LEFT,
-//         //     xScaling: 0.8,
-//         //     yScaling: 0.8,
-//         //     colour: 4
-//         // }),
-//         // new microcode.GUISlider({
-//         //     alignment: microcode.GUIComponentAlignment.LEFT,
-//         //     xScaling: 0.8,
-//         //     yScaling: 0.8,
-//         //     colour: 4
-//         // }),
-//         // new microcode.GUIGraph({
-//         //     alignment: microcode.GUIComponentAlignment.RIGHT,
-//         //     graphableFns: [gf],
-//         //     xOffset: -5,
-//         //     yOffset: 0,
-//         //     xScaling: 1,
-//         //     yScaling: 1,
-//         //     colour: 6
-//         // }),
-//         // new microcode.GUIBox({
-//         //     alignment: microcode.GUIComponentAlignment.BOT,
-//         //     xOffset: 0,
-//         //     yOffset: 0,
-//         //     xScaling: 0.6,
-//         //     yScaling: 0.3,
-//         //     colour: 7
-//         // })
-//     ]
-// });
-// app.pushScene(w)
+namespace microcode {
+    export class Home extends CursorScene {
+        private liveDataBtn: Button
+        private recordDataBtn: Button
+        private distributedLoggingBtn: Button
+        private viewBtn: Button
+        private tagline: string;
 
-const app = new microcode.App();
+        constructor(app: App) {
+            super(app)
+            this.tagline = ["Lets measure!", "Hello :)", "Lets experiment!", "Mini-measurer",
+                "Record & view", "Data Science toolkit", "Start experimenting!"][randint(0, 6)]
+        }
 
+        /* override */ startup() {
+            super.startup()
 
+            const y = 25
 
-class A {
-    public buttons: microcode.Button[]
-    private bounds: microcode.Bounds
-    private colour: number;
+            this.liveDataBtn = new Button({
+                parent: null,
+                style: ButtonStyles.Transparent,
+                icon: "linear_graph_1",
+                ariaId: "Real-time Data",
+                x: -58,
+                y,
+                onClick: () => {
+                    this.app.popScene()
+                    this.app.pushScene(new SensorSelect(this.app, CursorSceneEnum.LiveDataViewer))
+                },
+            })
 
-    constructor(bounds: microcode.Bounds, colour: number, buttons: microcode.Button[]) {
-        this.bounds = bounds
-        this.colour = colour
-        this.buttons = buttons
-    }
+            this.recordDataBtn = new Button({
+                parent: null,
+                style: ButtonStyles.Transparent,
+                icon: "edit_program",
+                ariaId: "Log Data",
+                x: -20,
+                y,
+                onClick: () => {
+                    this.app.popScene()
+                    this.app.pushScene(new SensorSelect(this.app, CursorSceneEnum.RecordingConfigSelect))
+                },
+            })
 
-    draw() {
-        this.bounds.fillRect(this.colour)
+            this.distributedLoggingBtn = new Button({
+                parent: null,
+                style: ButtonStyles.Transparent,
+                icon: "radio_set_group",
+                ariaId: "Command Mode",
+                x: 20,
+                y,
+                onClick: () => {
+                    this.app.popScene()
+                    this.app.pushScene(new DistributedLoggingScreen(this.app))
+                },
+            })
+
+            this.viewBtn = new Button({
+                parent: null,
+                style: ButtonStyles.Transparent,
+                icon: "largeDisk",
+                ariaId: "View Data",
+                x: 58,
+                y,
+                onClick: () => {
+                    this.app.popScene()
+                    this.app.pushScene(new DataViewSelect(this.app))
+                },
+            })
+
+            const btns: Button[] = [this.liveDataBtn, this.recordDataBtn, this.distributedLoggingBtn, this.viewBtn]
+            this.navigator.addButtons(btns)
+        }
+
+        private drawVersion() {
+            const font = bitmaps.font5
+            Screen.print(
+                "v1.5.1",
+                Screen.RIGHT_EDGE - font.charWidth * "v1.5.1".length,
+                Screen.BOTTOM_EDGE - font.charHeight - 2,
+                0xb,
+                font
+            )
+        }
+
+        private yOffset = -Screen.HEIGHT >> 1
+        draw() {
+            Screen.fillRect(
+                Screen.LEFT_EDGE,
+                Screen.TOP_EDGE,
+                Screen.WIDTH,
+                Screen.HEIGHT,
+                0xc
+            )
+
+            this.yOffset = Math.min(0, this.yOffset + 2)
+            const t = control.millis()
+            const dy = this.yOffset == 0 ? (Math.idiv(t, 800) & 1) - 1 : 0
+            const margin = 2
+            const OFFSET = (Screen.HEIGHT >> 1) - wordLogo.height - margin - 9
+            const y = Screen.TOP_EDGE + OFFSET //+ dy
+            Screen.drawTransparentImage(
+                wordLogo,
+                Screen.LEFT_EDGE + ((Screen.WIDTH - wordLogo.width) >> 1)// + dy
+                ,
+                y + this.yOffset
+            )
+            Screen.drawTransparentImage(
+                microbitLogo,
+                Screen.LEFT_EDGE +
+                ((Screen.WIDTH - microbitLogo.width) >> 1) + dy
+                ,
+                y - wordLogo.height + this.yOffset + margin
+            )
+
+            if (!this.yOffset) {
+                Screen.print(
+                    this.tagline,
+                    Screen.LEFT_EDGE +
+                    ((Screen.WIDTH + wordLogo.width) >> 1)
+                    + dy
+                    -
+                    microcode.font.charWidth * this.tagline.length,
+                    Screen.TOP_EDGE +
+                    OFFSET +
+                    wordLogo.height +
+                    dy +
+                    this.yOffset +
+                    3,
+                    0xb,
+                    microcode.font
+                )
+            }
+
+            this.liveDataBtn.draw()
+            this.recordDataBtn.draw()
+            this.distributedLoggingBtn.draw()
+            this.viewBtn.draw()
+
+            this.drawVersion()
+            super.draw()
+        }
     }
 }
-
-
-class B extends microcode.CursorScene {
-    private components: A[]
-    private componentIndex: number
-
-    constructor(app: microcode.App) {
-        super(app, new microcode.GridNavigator(1, 1))
-        this.components = []
-        this.componentIndex = 0
-    }
-
-    startup() {
-        super.startup()
-
-        input.onButtonPressed(Button.A, function () {
-            this.componentIndex = (this.componentIndex + 1) % 2
-            // this.navigator.clear()
-            this.navigator = new microcode.GridNavigator(1, 1)
-            this.navigator.addButtons(this.components[this.componentIndex])
-        })
-
-        this.components.push(
-            new A(
-                new microcode.Bounds({
-                    width: screen().width / 2,
-                    height: screen().height / 2,
-                    left: 0,
-                    top: 0
-                }),
-                6,
-                [
-                    new microcode.Button({
-                        icon: "hi",
-                        x: -30,
-                        y: -30
-                    })
-                ]
-            )
-        )
-        this.components.push(
-            new A(
-                new microcode.Bounds({
-                    width: screen().width / 2,
-                    height: screen().height / 2,
-                    left: -screen().width / 2,
-                    top: -screen().height / 2
-                }),
-                5,
-                [
-                    new microcode.Button({
-                        icon: "yo",
-                        x: -30,
-                        y: 0
-                    })
-                ]
-            )
-        )
-
-        // new microcode.Button({
-        //     icon: "wow",
-        //     x: -30,
-        //     y: -30
-        // })
-
-        this.navigator.addButtons(
-            this.components[this.componentIndex].buttons
-        )
-    }
-
-    draw() {
-        screen().fill(12)
-
-        this.components.forEach(comp => comp.draw())
-
-        super.draw()
-    }
-}
-
-
-app.pushScene(new B(app))

@@ -24,7 +24,7 @@ namespace microcode {
 
             const arcadeShieldConnected = shieldhelpers.shieldPresent();
             if (arcadeShieldConnected)
-                this.pushScene(new Home(this))
+                this.pushScene(new microcode.Home(this))
             else
                 new DistributedLoggingProtocol(this, false);
         }
