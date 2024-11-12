@@ -11,7 +11,7 @@ namespace microcode {
      * Used in sensors.draw()
      * Neccessary to prevent graph overflowing in the case of extreme readings
      */
-    export const BUFFERED_SCREEN_HEIGHT = Screen.HEIGHT - (Screen.HEIGHT * 0.078125) // 10
+    export const BUFFERED_SCREEN_HEIGHT = Screen.HEIGHT - 6
 
     /**
      * Is the graph or the sensors being shown? Is the graph zoomed in on?
@@ -344,7 +344,7 @@ namespace microcode {
                     if (this.drawSensorStates[i]) {
                         const hasSpace = this.sensors[i].getBufferLength() < this.sensors[i].getMaxBufferSize()
                         if ((this.guiState != GUI_STATE.ZOOMED_IN) || (this.guiState == GUI_STATE.ZOOMED_IN && hasSpace))
-                            this.sensors[i].readIntoBufferOnce(this.windowBotBuffer - (2 * this.yScrollOffset) + (Screen.HEIGHT * 0.0625)) // 8
+                            this.sensors[i].readIntoBufferOnce(this.windowBotBuffer - (2 * this.yScrollOffset) + 2) // 8
                     }
                         
                 }
@@ -368,21 +368,22 @@ namespace microcode {
 
                         // Draw the latest reading on the right-hand side as a Ticker if at no-zoom:
                         if (this.guiState != GUI_STATE.ZOOMED_IN && sensor.getHeightNormalisedBufferLength() > 0) {
-                            const fromY = this.windowBotBuffer - 2 * this.yScrollOffset + (Screen.HEIGHT * 0.078125) // 10
+                            const fromY = this.windowBotBuffer - ( 2 * this.yScrollOffset) + 3
 
                             const reading = sensor.getReading()
                             const range = Math.abs(sensor.getMinimum()) + sensor.getMaximum()
                             const y = Math.round(Screen.HEIGHT - ((((reading - sensor.getMinimum()) / range) * (BUFFERED_SCREEN_HEIGHT - fromY)))) - fromY
-                            
+
                             // Make sure the ticker won't be cut-off by other UI elements
-                            if (!tickerYValues.some(v => Math.abs(v - y) <= 4) && (y < sensor.getMaximum() - 5 && y > sensor.getMinimum() + 5)) {
+                            if (!tickerYValues.some(v => Math.abs(v - y) <= 4)) {
                                 screen().print(
-                                    sensor.getNthReading(sensor.getBufferLength() - 1).toString().slice(0, 5),
+                                    sensor.getNthReading(sensor.getBufferLength() - 1).toString().slice(0, 4),
                                     this.windowLeftBuffer + sensor.getBufferLength() + 4,
                                     y - 1,
                                     color,
                                     bitmaps.font5,
                                 )
+                                // basic.showString(sensor.getNthReading(sensor.getBufferLength() - 1).toString().slice(0, 5))
                             }
 
                             tickerYValues.push(y - 1)
