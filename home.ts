@@ -76,8 +76,8 @@ namespace microcode {
         private drawVersion() {
             const font = bitmaps.font5
             Screen.print(
-                "v1.5.1",
-                Screen.RIGHT_EDGE - font.charWidth * "v1.5.1".length,
+                "v1.5.2",
+                Screen.RIGHT_EDGE - font.charWidth * "v1.5.2".length,
                 Screen.BOTTOM_EDGE - font.charHeight - 2,
                 0xb,
                 font
