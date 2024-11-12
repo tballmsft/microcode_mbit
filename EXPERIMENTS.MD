@@ -2,9 +2,9 @@
 This guide details 4 potential use cases and experiments you can perform with MicroData:
 1. [Electro-magnets](#Electro-Magnets)
 2. [Micro-drop](#Micro-drop)
-4. [Noise insulation](#Noise-insulation)
-3. [Biology experiment](#Biology-Experiment)
-
+3. [Noise insulation](#Noise-insulation)
+4. [Biology experiment](#Biology-Experiment)
+5. [Ammeter](#Making-an-ammeter)
 
 # Electro-Magnets:
 MicroData lets you leverage the onboard magnometer to measure magnetic force from an electro-magnet in real-time.<br>
@@ -149,3 +149,25 @@ Student(s) have a unique water plan to follow - for example watering each plant 
 2. Each day they will follow their water plan. 
 3. At the end of the experiment the student(s) can make a table in their notebook(s) from the readings saved on the micro:bit and the corresponding height of the plant.​
 4. The student(s) can then share their results with the rest of the class to create a full table of data and analyse how a plant's height is affected by how it is watered.​
+
+
+# Making-an-ammeter
+How can we turn a voltmeter into an ammeter? Can we use it to explore the relationship between voltage, current & resistance?
+
+## Requirements:
+1. A microbit + an Arcade Shield.
+2. Wires/crocodile clips.
+3. Some resistors.
+4. Circuits to measure & make.
+
+# Background:
+The bbc micro:bit has 3 pins with which to measure voltage, in addition to a 3V supply and a ground pin. We can use the live data viewer to see the voltage of a circuit in realtime. We cannot directly measure the current of a circuit using a voltmeter, for that we need an ammeter; which we can make using a voltmeter and a resistor.
+
+The equation below tells us the relationship between voltage, current & resistance:<br>
+Voltage (V) = Current (I) * Resistance (R)
+
+If we know two of these variables then we can rearrange this equation to calculate the third one. For example, our voltmeter allows us to read the voltage at a point in a circuit, if we also know the resistance at that point then we can calculate the current:<br>
+Current (I) = Voltage (V) / Resistance (R)
+
+We can use this fact to create an ammeter by using a shunt resistor (a resistor with a known value). We can measure the voltage across this resistor and then plug the numbers into the equation above to calculate the current.
+
