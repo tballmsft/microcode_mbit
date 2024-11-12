@@ -802,7 +802,7 @@ namespace microcode {
     /**
      * Sensing analog values on the P0 pin.
      * .analogReadPin() returns a value between [0,1024], this is converted to volts.
-     * Returns value between [0, 3.011]
+     * Returns value between [0, 3]
      */
     export class AnalogPinP0Sensor extends Sensor {
         constructor() {super()}
@@ -810,14 +810,14 @@ namespace microcode {
         public static getRadioName(): string {return "AP0"}
         public static getReading(): number {return pins.analogReadPin(AnalogPin.P0) / 340}
         public static getMinimum(): number {return 0;}
-        public static getMaximum(): number {return 3.01;}
+        public static getMaximum(): number {return 3;}
     }
 
 
     /**
      * Sensing analog values on the P1 pin.
      * .analogReadPin() returns a value between [0,1024], this is converted to volts.
-     * Returns value between [0, 3.011]
+     * Returns value between [0, 3]
      */
     export class AnalogPinP1Sensor extends Sensor {
         constructor() {super()}
@@ -825,14 +825,14 @@ namespace microcode {
         public static getRadioName(): string {return "AP1"}
         public static getReading(): number { return pins.analogReadPin(AnalogPin.P1) / 340}
         public static getMinimum(): number {return 0;}
-        public static getMaximum(): number {return 3.01;}
+        public static getMaximum(): number {return 3;}
     }
 
 
     /**
      * Sensing the voltage on the P2 pin.
      * .analogReadPin() returns a value between [0,1024], this is converted to volts.
-     * Returns value between [0, 3.011]
+     * Returns value between [0, 3]
      */
     export class AnalogPinP2Sensor extends Sensor {
         constructor() {super()}
@@ -840,7 +840,7 @@ namespace microcode {
         public static getRadioName(): string {return "AP2"}
         public static getReading(): number { return pins.analogReadPin(AnalogPin.P2) / 340}
         public static getMinimum(): number {return 0;}
-        public static getMaximum(): number {return 3.01;}
+        public static getMaximum(): number {return 3;}
     }
 
 
