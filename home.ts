@@ -52,7 +52,7 @@ namespace microcode {
                 y,
                 onClick: () => {
                     this.app.popScene()
-                    this.app.pushScene(new DistributedLoggingScreen(this.app))
+                    // this.app.pushScene(new DistributedLoggingScreen(this.app)) // Temp disabled elements relating to callbackObj (no mem)
                 },
             })
 

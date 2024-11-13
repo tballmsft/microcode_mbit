@@ -255,10 +255,11 @@ namespace microcode {
          * Time it takes for this algorithm to run is accounted for when calculating how long to wait inbetween logs
          * Mutates this.schedule
          * 
+         * Temp disabled elements relating to callbackObj (no mem)
          * @param callbackObj is used by the DistributedLoggingProtocol; after each log & after the algorithm finishes a callback will be made
         */
-        start(callbackObj?: ITargetDataLoggedCallback) {
-            const callbackAfterLog: boolean = (callbackObj == null) ? false : true
+        start() {//callbackObj?: ITargetDataLoggedCallback) {
+            // const callbackAfterLog: boolean = (callbackObj == null) ? false : true
             
             control.inBackground(() => {
                 let currentTime = 0;
@@ -272,8 +273,8 @@ namespace microcode {
                     const logAsCSV = this.schedule[i].sensor.log(0)
 
                     // Optionally inform the caller of the log (In the case of the DistributedLoggingProtocol this information can be forwarded to the Commander over radio)
-                    if (callbackAfterLog)
-                        callbackObj.callback(logAsCSV)
+                    // if (callbackAfterLog)
+                    //     callbackObj.callback(logAsCSV)
 
                     // Clear from schedule (A sensor may only have 1 reading):
                     if (!this.schedule[i].sensor.hasMeasurements())
@@ -321,8 +322,8 @@ namespace microcode {
                             const logAsCSV = this.schedule[i].sensor.log(currentTime)
 
                             // Optionally inform the caller of the log (In the case of the DistributedLoggingProtocol this information can be forwarded to the Commander over radio)
-                            if (callbackAfterLog)
-                                callbackObj.callback(logAsCSV)
+                            // if (callbackAfterLog)
+                            //     callbackObj.callback(logAsCSV)
 
                             // Update schedule with when they should next be logged:
                             if (this.schedule[i].sensor.hasMeasurements()) {
@@ -349,10 +350,11 @@ namespace microcode {
                         . # # # .
                     `)
                 }
-                if (callbackAfterLog) {
-                    DistributedLoggingProtocol.finishedLogging = true
-                    callbackObj.callback("")
-                }
+
+                // if (callbackAfterLog) {
+                //     DistributedLoggingProtocol.finishedLogging = true
+                //     callbackObj.callback("")
+                // }
             })
         }
     }

@@ -25,8 +25,11 @@ namespace microcode {
             const arcadeShieldConnected = shieldhelpers.shieldPresent();
             if (arcadeShieldConnected)
                 this.pushScene(new microcode.Home(this))
-            else
-                new DistributedLoggingProtocol(this, false);
+
+            // Temp disabled elements relating to callbackObj (no mem)
+            // else
+                // new DistributedLoggingProtocol(this, false);
+                // new NoArcadeShieldMode(this);
         }
 
         public pushScene(scene: Scene) {

@@ -48,8 +48,7 @@
         "sensorSelect.ts",
         "dataRecorder.ts",
         "tabularDataViewer.ts",
-        "generateGraph.ts",
-        "distributedLogging.ts"
+        "generateGraph.ts"
     ],
     "testFiles": [],
     "targetVersions": {
