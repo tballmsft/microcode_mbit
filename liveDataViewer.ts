@@ -375,7 +375,7 @@ namespace microcode {
                             const y = Math.round(Screen.HEIGHT - ((((reading - sensor.getMinimum()) / range) * (BUFFERED_SCREEN_HEIGHT - fromY)))) - fromY
 
                             // Make sure the ticker won't be cut-off by other UI elements
-                            if (!tickerYValues.some(v => Math.abs(v - y) <= 4)) {
+                            if (!tickerYValues.some(v => Math.abs(v - y) <= 5)) {
                                 screen().print(
                                     sensor.getNthReading(sensor.getBufferLength() - 1).toString().slice(0, 4),
                                     this.windowLeftBuffer + sensor.getBufferLength() + 4,
@@ -383,10 +383,9 @@ namespace microcode {
                                     color,
                                     bitmaps.font5,
                                 )
-                                // basic.showString(sensor.getNthReading(sensor.getBufferLength() - 1).toString().slice(0, 5))
                             }
 
-                            tickerYValues.push(y - 1)
+                            tickerYValues.push(y)
                         }
                     }
                 }
